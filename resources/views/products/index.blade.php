@@ -7,7 +7,7 @@
             </div>
             <form class="grid gap-3 rounded-lg border border-zinc-200 bg-zinc-50 p-4 md:grid-cols-[1fr_240px_auto]" method="GET" action="{{ route('products.index') }}">
                 <input class="rounded-md border border-zinc-300 bg-white px-4 py-3 outline-none focus:border-emerald-700" type="search" name="search" value="{{ $search }}" placeholder="Rechercher par nom">
-                <select class="rounded-md border border-zinc-300 bg-white px-4 py-3 outline-none focus:border-emerald-700" name="category">
+                <select class="rounded-md border border-zinc-300 bg-white px-5 py-3 outline-none focus:border-emerald-700" name="category">
                     <option value="">Toutes les categories</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->slug }}" @selected($selectedCategory === $category->slug)>{{ $category->name }}</option>
