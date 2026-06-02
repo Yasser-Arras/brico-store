@@ -12,8 +12,21 @@ class CategoryController extends Controller
 {
     public function index(): View
     {
+        $categories = Category::withCount('products')
+            ->with(['products' => function ($query) {
+                $query->select('category_id', 'price');
+            }])
+            ->latest()
+            ->get();
+
+        // Calculate total value per category
+        $categoriesWithValue = $categories->map(function ($category) {
+            $category->total_value = $category->products->sum('price');
+            return $category;
+        });
+
         return view('admin.categories.index', [
-            'categories' => Category::withCount('products')->latest()->paginate(10),
+            'categories' => $categoriesWithValue,
         ]);
     }
 

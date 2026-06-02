@@ -15,6 +15,7 @@ class DashboardController extends Controller
             'productsCount' => Product::count(),
             'categoriesCount' => Category::count(),
             'latestProducts' => Product::with('category')->latest()->take(5)->get(),
+            'lowStockCount' => Product::where('stock_quantity', '<', 10)->count(),
         ]);
     }
 }

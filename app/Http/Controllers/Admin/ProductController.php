@@ -14,8 +14,18 @@ class ProductController extends Controller
 {
     public function index(): View
     {
+        $products = Product::with('category')->latest()->paginate(10);
+        $totalProducts = Product::count();
+        $lowStockProducts = Product::where('stock_quantity', '<', 10)->count();
+        $totalValue = Product::sum('price');
+        $totalCategories = Category::count();
+
         return view('admin.products.index', [
-            'products' => Product::with('category')->latest()->paginate(10),
+            'products' => $products,
+            'totalProducts' => $totalProducts,
+            'lowStockProducts' => $lowStockProducts,
+            'totalValue' => $totalValue,
+            'totalCategories' => $totalCategories,
         ]);
     }
 

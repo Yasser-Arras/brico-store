@@ -1,4 +1,5 @@
 <x-layouts.public title="Catalogue - BricoMag">
+     
     <section class="bg-white">
         <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
             <div class="mb-8">
@@ -7,7 +8,11 @@
             </div>
             <form class="grid gap-3 rounded-lg border border-zinc-200 bg-zinc-50 p-4 md:grid-cols-[1fr_240px_auto]" method="GET" action="{{ route('products.index') }}">
                 <input class="rounded-md border border-zinc-300 bg-white px-4 py-3 outline-none focus:border-emerald-700" type="search" name="search" value="{{ $search }}" placeholder="Rechercher par nom">
-                <select class="rounded-md border border-zinc-300 bg-white px-5 py-3 outline-none focus:border-emerald-700" name="category">
+<select
+    name="category"
+    class="w-full rounded-md border border-zinc-300 bg-white px-4 py-3
+           leading-normal focus:border-emerald-700 outline-none"
+>                    
                     <option value="">Toutes les categories</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->slug }}" @selected($selectedCategory === $category->slug)>{{ $category->name }}</option>

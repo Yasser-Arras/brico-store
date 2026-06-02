@@ -1,52 +1,108 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html class="light" lang="fr">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? 'Administration BricoMag' }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $title ?? 'BricoMag Admin Console' }}</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&family=Manrope:wght@400;500;600&family=Geist:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
 </head>
-<body class="bg-zinc-100 text-zinc-900 antialiased">
-    <div class="min-h-screen lg:flex">
-        <aside class="bg-zinc-950 text-white lg:fixed lg:inset-y-0 lg:w-72">
-            <div class="flex items-center justify-between px-6 py-5">
-                <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 font-bold">
-                    <span class="grid h-10 w-10 place-items-center rounded-lg bg-emerald-500 text-zinc-950">BM</span>
-                    <span>Admin BricoMag</span>
-                </a>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+    <!-- SideNavBar -->
+    <aside class="fixed h-full w-[280px] left-0 top-0 bg-on-background flex flex-col py-6 shadow-lg z-50">
+        <div class="px-6 mb-10 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary-container overflow-hidden">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                </svg>
             </div>
-            <nav class="grid gap-1 px-4 pb-6 text-sm">
-                <a class="rounded-md px-4 py-3 hover:bg-white/10 {{ request()->routeIs('admin.dashboard') ? 'bg-white/10' : '' }}" href="{{ route('admin.dashboard') }}">Tableau de bord</a>
-                <a class="rounded-md px-4 py-3 hover:bg-white/10 {{ request()->routeIs('admin.products.*') ? 'bg-white/10' : '' }}" href="{{ route('admin.products.index') }}">Produits</a>
-                <a class="rounded-md px-4 py-3 hover:bg-white/10 {{ request()->routeIs('admin.categories.*') ? 'bg-white/10' : '' }}" href="{{ route('admin.categories.index') }}">Categories</a>
-                <a class="rounded-md px-4 py-3 hover:bg-white/10" href="{{ route('home') }}">Voir le site</a>
-            </nav>
-            <form class="px-4" method="POST" action="{{ route('admin.logout') }}">
-                @csrf
-                <button class="w-full rounded-md bg-white px-4 py-3 text-left text-sm font-semibold text-zinc-950 hover:bg-emerald-100">Deconnexion</button>
-            </form>
-        </aside>
-
-        <div class="flex-1 lg:ml-72">
-            <header class="border-b border-zinc-200 bg-white px-4 py-4 sm:px-6 lg:px-8">
-                <div class="flex flex-wrap items-center justify-between gap-3">
-                    <div>
-                        <p class="text-sm text-zinc-500">Espace administrateur</p>
-                        <h1 class="text-2xl font-bold">{{ $heading ?? 'Tableau de bord' }}</h1>
-                    </div>
-                    <p class="text-sm text-zinc-600">{{ auth()->user()->name }}</p>
-                </div>
-            </header>
-            <main class="px-4 py-8 sm:px-6 lg:px-8">
-                @if (session('success'))
-                    <div class="mb-6 rounded-md border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">{{ session('success') }}</div>
-                @endif
-                @if ($errors->has('category'))
-                    <div class="mb-6 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{{ $errors->first('category') }}</div>
-                @endif
-                {{ $slot }}
-            </main>
+            <div>
+                <h1 class="font-headline-md text-headline-md font-bold text-primary-fixed leading-none">BricoMag</h1>
+                <p class="font-label-md text-label-md text-surface-variant opacity-60">Admin Console</p>
+            </div>
         </div>
-    </div>
+        
+        <nav class="flex-1 px-4 space-y-1">
+            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('admin.dashboard') ? 'bg-primary-container text-on-primary-container border-l-4 border-primary' : 'text-white hover:text-white hover:bg-on-surface-variant rounded-r-lg' }} transition-colors cursor-pointer active:scale-95">
+                <span class="material-symbols-outlined" style="{{ request()->routeIs('admin.dashboard') ? 'font-variation-settings: \'FILL\' 1;' : '' }}">dashboard</span>
+                <span class="font-body-md text-body-md">Dashboard</span>
+            </a>
+            <a href="{{ route('admin.products.index') }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('admin.products.*') ? 'bg-primary-container text-on-primary-container border-l-4 border-primary' : 'text-white hover:text-white hover:bg-on-surface-variant rounded-r-lg' }} transition-colors cursor-pointer active:scale-95">
+                <span class="material-symbols-outlined">inventory_2</span>
+                <span class="font-body-md text-body-md">Products</span>
+            </a>
+            <a href="{{ route('admin.categories.index') }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('admin.categories.*') ? 'bg-primary-container text-on-primary-container border-l-4 border-primary' : 'text-white hover:text-white hover:bg-on-surface-variant rounded-r-lg' }} transition-colors cursor-pointer active:scale-95">
+                <span class="material-symbols-outlined">category</span>
+                <span class="font-body-md text-body-md">Categories</span>
+            </a>
+            <a href="{{ route('home') }}" class="flex items-center gap-3 px-4 py-3 text-white hover:text-white hover:bg-on-surface-variant transition-colors cursor-pointer rounded-r-lg active:scale-95">
+                <span class="material-symbols-outlined">public</span>
+                <span class="font-body-md text-body-md">View Site</span>
+            </a>
+        </nav>
+        
+        <div class="px-4 mt-auto space-y-1">
+            <a href="{{ route('admin.products.create') }}" class="w-full mb-5 bg-primary text-white py-3 rounded-xl font-body-md flex items-center justify-center gap-2 hover:bg-primary/90 transition-all active:scale-95">
+                <span class="material-symbols-outlined">add</span>
+                New Product
+            </a>
+            <form method="POST" action="{{ route('admin.logout') }}">
+                @csrf
+                <button type="submit" class="w-full flex items-center gap-3 px-4 py-3 text-error hover:bg-error/10 transition-colors cursor-pointer rounded-r-lg">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span class="font-body-md text-body-md">Sign Out</span>
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    <!-- Main Content Canvas -->
+    <main class="ml-[280px] pt-16 min-h-screen">
+        <div class="max-w-[1440px] mx-auto p-8 animate-in fade-in duration-700">
+            @if (session('success'))
+                <div class="mb-6 rounded-lg bg-primary/10 border border-primary/20 px-4 py-3 text-sm text-primary font-medium flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">check_circle</span>
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="mb-6 rounded-lg bg-error/10 border border-error/20 px-4 py-3 text-sm text-error font-medium flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">error</span>
+                    {{ $errors->first() }}
+                </div>
+            @endif
+            
+            {{ $slot }}
+        </div>
+    </main>
+
+    <script>
+        // Glass card hover effect
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
 </body>
 </html>
