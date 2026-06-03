@@ -1,5 +1,6 @@
 <x-layouts.public title="BricoMag - L'Outillage d'Excellence à Casablanca">
     <!-- Hero Section -->
+
     <section class="relative bg-surface-container-lowest overflow-hidden">
         <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-20 md:py-32">
             <div class="z-10 order-2 md:order-1">
@@ -130,7 +131,7 @@
                 pour votre prochain bricole ?</h3>
             <p class="text-gray-600 mb-10 leading-relaxed" style="font-family: 'Inter', sans-serif;">Inscrivez-vous à
                 notre newsletter pour recevoir des conseils d'experts et nos dernières promotions en avant-première.</p>
-            <form class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto" method="POST" action="#">
+            <form class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto" method="POST" action="{{ route('subscribe') }}">
                 @csrf
                 <input
                     class="flex-grow border-0 border-b border-gray-300 focus:border-emerald-700 focus:ring-0 px-4 py-3 bg-transparent font-semibold text-sm"

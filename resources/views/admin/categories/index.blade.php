@@ -1,29 +1,28 @@
 <x-layouts.admin>
     <!-- Header -->
     <div class="mb-8">
-        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 p-6 rounded-2xl bg-primary/5 border border-primary/10">
 
-            <!-- Left text -->
-            <div class="space-y-2">
-                <h2 class="text-3xl font-bold text-on-surface">
-                    Catégories
-                </h2>
+    <!-- Left text -->
+    <div class="space-y-2 max-w-2xl">
+        <h2 class="text-3xl font-bold text-on-surface tracking-tight">
+            Catégories
+        </h2>
 
-                <p class="text-base text-on-surface-variant">
-                    Gérer les catégories de produits pour organiser votre inventaire.
-                </p>
-            </div>
+        <p class="text-base text-on-surface-variant leading-relaxed">
+            Gérer les catégories de produits pour organiser votre inventaire.
+        </p>
+    </div>
 
-           
-            <div>
-                <a href="{{ route('admin.categories.create') }}"
-                    class="bg-primary text-on-primary px-6 py-3 rounded-xl font-label-md flex items-center gap-2 hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95">
-                    <span class="material-symbols-outlined">add_circle</span>
-                    Ajouter une catégorie
-</a>
-            </div>
+    <!-- Button -->
+    <a href="{{ route('admin.categories.create') }}"
+       class="bg-primary text-on-primary px-6 py-3 rounded-xl font-label-md flex items-center gap-2
+              hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95 w-fit">
+        <span class="material-symbols-outlined">add_circle</span>
+        Ajouter une catégorie
+    </a>
 
-        </div>
+</div>
     </div>
 
     <!-- Horizontal Scrollable Categories Bar -->

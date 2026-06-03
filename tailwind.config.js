@@ -12,7 +12,7 @@ export default {
                 'inverse-primary': '#4edea3',
                 'tertiary': '#505f76',
                 'primary': '#006c49',
-                'accent': '#20b0f9',
+                'accent': '#14a909',
                 
                 'secondary-fixed-dim': '#bec6e0',
                 'on-secondary': '#ffffff',

@@ -51,10 +51,19 @@
                 <span class="material-symbols-outlined">category</span>
                 <span class="font-body-md text-body-md">Categories</span>
             </a>
+             <a href="{{ route('admin.orders.index') }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('admin.orders.*') ? 'bg-primary-container text-on-primary-container border-l-4 border-primary' : 'text-white hover:text-white hover:bg-on-surface-variant rounded-r-lg' }} transition-colors cursor-pointer active:scale-95">
+                <span class="material-symbols-outlined">shopping_cart</span>
+                <span class="font-body-md text-body-md">Orders</span>
+            </a>
+             <a href="{{ route('admin.users.index') }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('admin.users.*') ? 'bg-primary-container text-on-primary-container border-l-4 border-primary' : 'text-white hover:text-white hover:bg-on-surface-variant rounded-r-lg' }} transition-colors cursor-pointer active:scale-95">
+                <span class="material-symbols-outlined">people</span>
+                <span class="font-body-md text-body-md">Users</span>
+            </a>
             <a href="{{ route('home') }}" class="flex items-center gap-3 px-4 py-3 text-white hover:text-white hover:bg-on-surface-variant transition-colors cursor-pointer rounded-r-lg active:scale-95">
                 <span class="material-symbols-outlined">public</span>
                 <span class="font-body-md text-body-md">View Site</span>
             </a>
+            
         </nav>
         
         <div class="px-4 mt-auto space-y-1">
@@ -62,7 +71,7 @@
                 <span class="material-symbols-outlined">add</span>
                 New Product
             </a>
-            <form method="POST" action="{{ route('admin.logout') }}">
+            <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="w-full flex items-center gap-3 px-4 py-3 text-error hover:bg-error/10 transition-colors cursor-pointer rounded-r-lg">
                     <span class="material-symbols-outlined">logout</span>

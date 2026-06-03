@@ -22,7 +22,18 @@
                     <p class="mt-1 text-3xl font-black">{{ $product->stock_quantity }}</p>
                 </div>
             </div>
-            <a class="inline-flex rounded-md bg-zinc-900 px-5 py-3 font-semibold text-white hover:bg-emerald-700" href="{{ route('products.index') }}">Retour au catalogue</a>
+            <div class="flex flex-wrap gap-3">
+                @auth
+                    <form class="flex gap-3" method="POST" action="{{ route('cart.store', $product) }}">
+                        @csrf
+                        <input class="w-24 rounded-md border border-zinc-300 px-3 py-3 outline-none focus:border-emerald-700" type="number" name="quantity" min="1" max="{{ max($product->stock_quantity, 1) }}" value="1">
+                        <button class="rounded-md bg-emerald-700 px-5 py-3 font-semibold text-white hover:bg-emerald-800" @disabled($product->stock_quantity < 1)>Add to cart</button>
+                    </form>
+                @else
+                    <a class="inline-flex rounded-md bg-emerald-700 px-5 py-3 font-semibold text-white hover:bg-emerald-800" href="{{ route('login') }}">Sign in to add to cart</a>
+                @endauth
+                <a class="inline-flex rounded-md bg-zinc-900 px-5 py-3 font-semibold text-white hover:bg-emerald-700" href="{{ route('products.index') }}">Retour au catalogue</a>
+            </div>
         </div>
     </section>
 </x-layouts.public>

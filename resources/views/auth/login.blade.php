@@ -1,9 +1,9 @@
-<x-layouts.public title="Connexion administrateur - BricoMag">
+<x-layouts.public title="Se connecter - BricoMag">
     <section class="mx-auto grid min-h-[70vh] max-w-7xl place-items-center px-4 py-12 sm:px-6 lg:px-8">
-        <form class="w-full max-w-md rounded-lg border border-zinc-200 bg-white p-8 shadow-sm" method="POST" action="{{ route('admin.login.store') }}">
+        <form class="w-full max-w-md rounded-lg border border-zinc-200 bg-white p-8 shadow-sm" method="POST" action="{{ route('login.store') }}">
             @csrf
-            <h1 class="text-3xl font-black">Connexion admin</h1>
-            <p class="mt-2 text-sm text-zinc-600">Acces reserve a la gestion du magasin.</p>
+            <h1 class="text-3xl font-black">Se connecter</h1>
+            <p class="mt-2 text-sm text-zinc-600">Accédez à votre panier. Les comptes admin seront redirigés vers le tableau de bord.</p>
             <div class="mt-6 space-y-4">
                 <label class="block">
                     <span class="text-sm font-semibold">Email</span>
@@ -20,6 +20,7 @@
                     Se souvenir de moi
                 </label>
                 <button class="w-full rounded-md bg-emerald-700 px-5 py-3 font-semibold text-white hover:bg-emerald-800">Se connecter</button>
+                <p class="text-center text-sm text-zinc-600">Pas de compte ? <a class="font-semibold text-emerald-700" href="{{ route('register') }}">Créer un compte</a></p>
             </div>
         </form>
     </section>

@@ -1,25 +1,25 @@
 <x-layouts.admin>
 
    
-    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
+ <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8 p-6 rounded-2xl bg-primary/5 border border-primary/10">
 
-            <!-- Left text -->
-          <div class="space-y-2">
-            <h2 class="text-3xl font-bold text-on-surface">
-                Dashboard
-            </h2>
+    <!-- Left text -->
+    <div class="space-y-2 max-w-2xl">
+        <h2 class="text-3xl font-bold text-on-surface tracking-tight">
+            Dashboard
+        </h2>
 
-            <p class="text-base text-on-surface-variant">
-                Aperçu rapide des performances de votre magasin et de l'inventaire actuel.
-            </p>
-        </div>
+        <p class="text-base text-on-surface-variant leading-relaxed">
+            Aperçu rapide des performances de votre magasin et de l'inventaire actuel.
+        </p>
+    </div>
 
-           
-            <div>
-                
-            </div>
+    <!-- Right side (optional actions) -->
+    <div>
+        <!-- empty for now -->
+    </div>
 
-        </div>
+</div>
     <!-- Stats Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         <!-- Stat Card 1 - Total Products -->
@@ -32,9 +32,6 @@
                     </span>
                 </div>
 
-                <span class="text-primary font-label-md bg-primary/15 px-2 py-0.5 rounded-full">
-                    {{ $productsCount }}
-                </span>
             </div>
 
             <p class="text-outline font-label-md mb-1 uppercase tracking-wider">Total Produits</p>
@@ -50,7 +47,7 @@
         <div class="glass-card rounded-xl p-6 relative overflow-hidden group border-2 border-outline-variant/30">
 
             <div class="flex justify-between items-start mb-3">
-                <div class="w-12 h-12 flex items-center justify-center bg-primary rounded-lg">
+                <div class="w-12 h-12 flex items-center justify-center bg-fouriary rounded-lg">
                     <span class="material-symbols-outlined text-white">
                         category
                     </span>
@@ -61,7 +58,7 @@
             <h3 class="font-headline-lg text-headline-lg">{{ $categoriesCount }}</h3>
 
             <div class="mt-4 h-1 bg-surface-container rounded-full overflow-hidden">
-                <div class="h-full bg-primary"></div>
+                <div class="h-full bg-fouriary"></div>
             </div>
         </div>
 

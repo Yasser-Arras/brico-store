@@ -17,6 +17,10 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Administrateur',
                 'password' => Hash::make('password'),
+                'role' => 'admin',
+                'phone' => '0123456789',
+                'address' => '123 Rue de l\'Admin, 75000 Maroc',
+                
             ]
         );
 

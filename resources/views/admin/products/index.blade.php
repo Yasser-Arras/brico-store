@@ -1,29 +1,30 @@
 <x-layouts.admin>
+   
+
     <!-- Header -->
     <div class="mb-8">
-         <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
+       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8 p-6 rounded-2xl bg-primary/5 border border-primary/10">
 
-            <!-- Left text -->
-          <div class="space-y-2">
-            <h2 class="text-3xl font-bold text-on-surface">
-                Produits
-            </h2>
+    <!-- Left text -->
+    <div class="space-y-2 max-w-2xl">
+        <h2 class="text-3xl font-bold text-on-surface tracking-tight">
+            Produits
+        </h2>
 
-            <p class="text-base text-on-surface-variant">
-                Gérer les produits de votre magasin, ajouter de nouveaux articles, et suivre les stocks.
-            </p>
-        </div>
+        <p class="text-base text-on-surface-variant leading-relaxed">
+            Gérer les produits de votre magasin, ajouter de nouveaux articles, et suivre les stocks.
+        </p>
+    </div>
 
-           
-            <div>
-                <a href="{{ route('admin.products.create') }}"
-                    class="bg-primary text-on-primary px-6 py-3 rounded-xl font-label-md flex items-center gap-2 hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95">
-                    <span class="material-symbols-outlined">add_circle</span>
-                    Ajouter un produit
-</a>
-            </div>
+    <!-- Button -->
+    <a href="{{ route('admin.products.create') }}"
+       class="bg-primary text-on-primary px-6 py-3 rounded-xl font-label-md flex items-center gap-2
+              hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95 w-fit">
+        <span class="material-symbols-outlined">add_circle</span>
+        Ajouter un produit
+    </a>
 
-        </div>
+</div>
         <!-- Stats Grid -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
 
@@ -61,9 +62,9 @@
             <div class="glass-card rounded-xl p-6 relative overflow-hidden group border-2 border-outline-variant/30">
 
                 <div class="flex justify-between items-start mb-4">
-                    <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-secondary text-white">
+                    <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-accent text-white">
                         <span class="material-symbols-outlined text-[22px] leading-none">
-                            euro
+                            payments
                         </span>
                     </div>
                 </div>
@@ -78,7 +79,7 @@
             <div class="glass-card rounded-xl p-6 relative overflow-hidden group border-2 border-outline-variant/30">
 
                 <div class="flex justify-between items-start mb-4">
-                    <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-accent text-white">
+                    <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-fouriary text-white">
                         <span class="material-symbols-outlined text-[22px] leading-none">
                             category
                         </span>
@@ -137,7 +138,9 @@
                             </td>
                             <td class="px-6 py-4">
                                 <span
-                                    class="px-3 py-1.5 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-xs font-medium border border-secondary-fixed/40">{{ $product->category->name }}</span>
+    class="inline-flex items-center rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary">
+    {{ $product->category->name }}
+</span>
                             </td>
                             <td class="px-6 py-4 font-medium text-on-background">
                                 {{ number_format($product->price, 2, ',', ' ') }} MAD
