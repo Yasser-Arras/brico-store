@@ -140,7 +140,7 @@ php artisan serve
 - [ ] Notifications modernes
 - [ ] Dashboard analytics
 - [ ] Intégration d'un provideur de paiment (Ex: Stripe..)
-
+- [ ] Intégration d'un provideur des newsletters
 ---
 
 ##  Notes importantes
