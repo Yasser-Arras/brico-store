@@ -46,6 +46,7 @@
                 <a class="hover:text-emerald-700" href="{{ route('home') }}">Accueil</a>
                 <a class="hover:text-emerald-700" href="{{ route('products.index') }}">Catalogue</a>
                 @auth
+                    <a class="hover:text-emerald-700" href="{{ route('profile.edit') }}">Profil</a>
                     <a class="hover:text-emerald-700" href="{{ route('cart.index') }}">Panier</a>
                     @if (auth()->user()->isAdmin())
                         <a class="rounded-md bg-zinc-900 px-4 py-2 text-white" href="{{ route('admin.dashboard') }}">Admin</a>

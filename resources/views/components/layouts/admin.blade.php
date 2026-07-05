@@ -45,23 +45,23 @@
             </a>
             <a href="{{ route('admin.products.index') }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('admin.products.*') ? 'bg-primary-container text-on-primary-container border-l-4 border-primary' : 'text-white hover:text-white hover:bg-on-surface-variant rounded-r-lg' }} transition-colors cursor-pointer active:scale-95">
                 <span class="material-symbols-outlined">inventory_2</span>
-                <span class="font-body-md text-body-md">Products</span>
+                <span class="font-body-md text-body-md">Produits</span>
             </a>
             <a href="{{ route('admin.categories.index') }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('admin.categories.*') ? 'bg-primary-container text-on-primary-container border-l-4 border-primary' : 'text-white hover:text-white hover:bg-on-surface-variant rounded-r-lg' }} transition-colors cursor-pointer active:scale-95">
                 <span class="material-symbols-outlined">category</span>
-                <span class="font-body-md text-body-md">Categories</span>
+                <span class="font-body-md text-body-md">Catégories</span>
             </a>
              <a href="{{ route('admin.orders.index') }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('admin.orders.*') ? 'bg-primary-container text-on-primary-container border-l-4 border-primary' : 'text-white hover:text-white hover:bg-on-surface-variant rounded-r-lg' }} transition-colors cursor-pointer active:scale-95">
                 <span class="material-symbols-outlined">shopping_cart</span>
-                <span class="font-body-md text-body-md">Orders</span>
+                <span class="font-body-md text-body-md">Commandes</span>
             </a>
              <a href="{{ route('admin.users.index') }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('admin.users.*') ? 'bg-primary-container text-on-primary-container border-l-4 border-primary' : 'text-white hover:text-white hover:bg-on-surface-variant rounded-r-lg' }} transition-colors cursor-pointer active:scale-95">
                 <span class="material-symbols-outlined">people</span>
-                <span class="font-body-md text-body-md">Users</span>
+                <span class="font-body-md text-body-md">Utilisateurs</span>
             </a>
             <a href="{{ route('home') }}" class="flex items-center gap-3 px-4 py-3 text-white hover:text-white hover:bg-on-surface-variant transition-colors cursor-pointer rounded-r-lg active:scale-95">
                 <span class="material-symbols-outlined">public</span>
-                <span class="font-body-md text-body-md">View Site</span>
+                <span class="font-body-md text-body-md">Voir le site</span>
             </a>
             
         </nav>
@@ -69,13 +69,13 @@
         <div class="px-4 mt-auto space-y-1">
             <a href="{{ route('admin.products.create') }}" class="w-full mb-5 bg-primary text-white py-3 rounded-xl font-body-md flex items-center justify-center gap-2 hover:bg-primary/90 transition-all active:scale-95">
                 <span class="material-symbols-outlined">add</span>
-                New Product
+                Nouveau produit
             </a>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="w-full flex items-center gap-3 px-4 py-3 text-error hover:bg-error/10 transition-colors cursor-pointer rounded-r-lg">
                     <span class="material-symbols-outlined">logout</span>
-                    <span class="font-body-md text-body-md">Sign Out</span>
+                    <span class="font-body-md text-body-md">Se déconnecter</span>
                 </button>
             </form>
         </div>
@@ -90,10 +90,10 @@
                     {{ session('success') }}
                 </div>
             @endif
-            @if ($errors->any())
+           @if (session('error'))
                 <div class="mb-6 rounded-lg bg-error/10 border border-error/20 px-4 py-3 text-sm text-error font-medium flex items-center gap-2">
                     <span class="material-symbols-outlined text-[18px]">error</span>
-                    {{ $errors->first() }}
+                    {{ session('error') }}
                 </div>
             @endif
             

@@ -15,6 +15,9 @@
                     <input class="mt-1 w-full rounded-md border border-zinc-300 px-4 py-3 outline-none focus:border-emerald-700" type="password" name="password" required>
                     @error('password') <span class="mt-1 block text-sm text-red-600">{{ $message }}</span> @enderror
                 </label>
+                <div class="text-right text-sm">
+                    <a class="font-semibold text-emerald-700" href="{{ route('password.request') }}">Mot de passe oublie ?</a>
+                </div>
                 <label class="flex items-center gap-2 text-sm text-zinc-600">
                     <input class="rounded border-zinc-300 text-emerald-700" type="checkbox" name="remember" value="1">
                     Se souvenir de moi
