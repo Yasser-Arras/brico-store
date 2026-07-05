@@ -101,9 +101,11 @@ php artisan serve
 | `admin` | Accès panel admin |
 
 ---
-Compte admin : \n
-Email : admin@bricomag.test \n
-Password : password \n
+### Compte administrateur
+
+| **Email** | `admin@bricomag.test` |
+|-----------|-----------------------|
+| **Password** | `password` |
 ---
 ##  Fonctionnalités
 
