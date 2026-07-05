@@ -99,11 +99,12 @@ php artisan serve
 |------|-------|
 | `user` | Utilisateur normal |
 | `admin` | Accès panel admin |
+
+---
 Compte admin :
 Email : admin@bricomag.test
 Password : password
 ---
-
 ##  Fonctionnalités
 
 ### Boutique
