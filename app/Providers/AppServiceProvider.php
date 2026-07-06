@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Providers;
-
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
  use Illuminate\Auth\Notifications\ResetPassword;
@@ -24,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        if (App::environment('production')) {
+        URL::forceScheme('https');
+        }
         ResetPassword::toMailUsing(function ($notifiable, string $token) {
 
             $url = url(route('password.reset', [
