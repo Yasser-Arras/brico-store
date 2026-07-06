@@ -18,6 +18,22 @@ Elle inclut un système de boutique, panier, commandes et un panel admin complet
 
 ---
 
+## Prérequis
+
+Avant d'installer le projet, assurez-vous d'avoir les logiciels suivants :
+
+| Logiciel | Version recommandée |
+|----------|---------------------|
+| PHP | 8.2+ |
+| Composer | Dernière version |
+| Node.js | 18+ |
+| MySQL / MariaDB | 5.7+ |
+
+
+
+---
+
+
 ##  Installation du projet
 
 ### 1. Cloner le projet
